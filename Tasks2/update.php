@@ -5,9 +5,9 @@ $data = [
     "title"   => $_POST['title'],
     "content" => $_POST['content']
 ];
-$pdo = new PDO("msql:host=localhost; bdname=test", "root", "");
+$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
 $sql = 'UPDATE tasks SET title=:title, WHERE id=:id';
 $statement = $pdo->prepare($sql);
-$statement->execute();
+$statement->execute($data);
 
-header("Location: http://localhost/MyNotes0/Tasks2/");exit;
+header("Location: http://localhost/MyTasks/Tasks2/");exit;

@@ -1,9 +1,8 @@
 <?php
-$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-$statement = $pdo->prepare("SELECT * FROM tasks WHERE id=:id");
-$statement->bindParam(":id", $_GET['id']);
-$statement->execute();
-$task = $statement->fetch(PDO::FETCH_ASSOC);
+$id = $_GET['id'];
+require 'database/QueryBuilder.php';
+$db = new QueryBuilder;
+$tasks = $db->getTask($id);
 
 ?>
 <!doctype html>
@@ -27,7 +26,7 @@ $task = $statement->fetch(PDO::FETCH_ASSOC);
                         </div>
                         
                         <div class="from-group">
-                            <button class="btn btn-warning" type="submit">Submit</button>
+                            <button class="btn btn-success" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>    

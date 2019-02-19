@@ -1,8 +1,6 @@
 <?php
-$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-$statement = $pdo->prepare("SELECT * FROM tasks WHERE id=:id");
-$statement->bindParam(":id", $_GET['id']);
-$statement->execute();
+require 'database/QueryBuilder.php';
+$db = new QueryBuilder;
 $task = $statement->fetch(PDO::FETCH_ASSOC);
 
 ?>
@@ -20,7 +18,7 @@ $task = $statement->fetch(PDO::FETCH_ASSOC);
             <p>
                 <?= $task['content'];?>
             </p>
-            <a href="http://localhost/MyTasks/Tasks2/">Go Back</a>
+            <a href="http://localhost/MyTasks/Tasks3/">Go Back</a>
         </div>
     </div>    
 </div>
